@@ -1,0 +1,17 @@
+@keyframes moveFromTop {
+    from {
+        margin-top: 0;
+    }
+    to {
+        margin-top: var(--spacing-minimal);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

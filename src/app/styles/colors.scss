@@ -1,0 +1,27 @@
+.theme-normal {
+    --primary: #5602EE;
+    --primary-hover: #6E3DEC;
+    --primary-gradient: linear-gradient(to right, #5602EE, #6E3DEC);
+    --secondary: #9BEE02;
+    --secondary-hover: #84CB00;
+    --background: #FFFFFF;
+    --success: #9BEE02;
+    --warning: #FFBB4F;
+    --error: #EE029B;
+    --white: #FFFFFF;
+    --black: #000000;
+}
+
+.theme-dark {
+    --primary: #212121;
+    --primary-hover: #424242;
+    --primary-gradient: linear-gradient(to right, #212121, #424242);
+    --secondary: #9BEE02;
+    --secondary-hover: #84CB00;
+    --background: #616161;
+    --success: #9BEE02;
+    --warning: #FFBB4F;
+    --error: #EE029B;
+    --white: #E0E0E0;
+    --black: #000000;
+}

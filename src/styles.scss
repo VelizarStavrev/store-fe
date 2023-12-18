@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+@import './app/styles/fonts';
+@import './app/styles/variables';
+@import './app/styles/colors';
+@import './app/styles/animations';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: var(--transition-color), var(--transition-background-color), var(--transition-border-color);
+}
+
+body {
+    font-family: Inter, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: var(--font-size-normal);
+    background-color: var(--background);
+}
+
+main {
+    height: calc(100vh - 22px - 49px - 32px);
+}
+
+button {
+    cursor: pointer;
+    font-size: var(--font-size-normal);
+}

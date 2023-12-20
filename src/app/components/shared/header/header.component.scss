@@ -1,0 +1,115 @@
+@import '../../../styles/mixins.scss';
+
+header {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: var(--spacing-small);
+    background-image: var(--primary-gradient);
+    color: var(--white);
+    align-items: center;
+
+    .logo-container {
+        grid-row: 1;
+        grid-column: 1;
+        font-size: var(--font-size-medium);
+    }
+
+    a {
+        color: var(--white);
+        text-transform: uppercase;
+        text-decoration: none;
+        font-weight: bold;
+
+        &:hover {
+            color: var(--secondary);
+        }
+
+        &.active {
+            color: var(--secondary);
+            text-decoration: underline;
+            text-underline-offset: var(--spacing-minimal);
+        }
+    }
+
+    nav {
+        grid-row: 1;
+        grid-column: 1 / 4;
+        justify-self: center;
+
+        a {
+            margin-right: var(--spacing-medium);
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+
+    .buttons-container {
+        grid-row: 1;
+        grid-column: 3;
+        justify-self: end;
+        display: flex; // Used to apply automatic align-items: stretch due to different button height
+
+        .button-container {
+            position: relative;
+            
+            button {
+                border: none;
+                background-color: transparent;
+                color: var(--white);
+                display: inline-flex;
+                align-items: center;
+                padding: var(--spacing-minimal);
+                border-bottom: 2px solid transparent;
+                border-radius: var(--border-radius-small);
+                height: 100%;
+    
+                svg {
+                    width: auto;
+                    height: 17px;
+                    
+                    &.spacing-right-minimal {
+                        margin-right: var(--spacing-minimal);
+                    }
+                }
+    
+                &:hover,
+                &.active {
+                    color: var(--secondary);
+    
+                    svg {                    
+                        circle {
+                            fill: var(--secondary);
+                            transition: var(--transition-svg);
+                        }
+    
+                        path {
+                            stroke: var(--secondary);
+                            transition: var(--transition-svg);
+                        }
+                    }
+                }
+    
+                &.active {
+                    border-color: var(--secondary);
+                }
+            }
+        }
+    }
+
+    .click-closer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 1;
+    }
+
+    @include phone {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-small);
+    }
+}

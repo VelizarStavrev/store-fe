@@ -5,7 +5,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Running the project
 
 Run `npm install` to install all required dependencies.
-Run `npm start` for a dev server. The project should be opened in a new window in your default browser. Otherwise navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `npm start` for a dev server. The project should be opened in a new window in your default browser. Otherwise navigate to [http://localhost:4200/](http://localhost:4200/). The application will automatically reload if you change any of the source files.
 
 ## Running unit tests
 
@@ -39,3 +39,6 @@ It has the following additional rules:
 
 - Implement linting before commit locally
 - Implement linting after push on GitHub
+
+## References for future use
+- Testing logic in the constructor - `theme.service.spec.ts`

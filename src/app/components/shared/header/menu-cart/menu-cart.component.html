@@ -1,0 +1,30 @@
+<div class="menu-container">
+    <p class="menu-title">CART</p>
+
+    <div class="cart-container">
+        <div class="cart-item" *ngFor="let item of cartItems">
+            <div class="cart-item-information">
+                <div class="cart-item-image">
+                    <img [src]="item.imageURL" alt="">
+                </div>
+                
+                <div class="cart-item-text">
+                    <p class="cart-item-title" [title]="item.name">{{ item.name }}</p>
+                    <p>{{ item.quantity }}x {{ item.price | currency }}</p>
+                </div>
+            </div>
+
+            <button>
+                <svg width="15" height="14" viewBox="0 0 15 14" fill="none">
+                    <path d="M1.25977 1L13.2598 13M1.25977 13L13.2598 1" stroke="white" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <div class="button-container">
+        Total: {{ totalPrice | currency }}
+
+        <a routerLink="/cart">Go to cart</a>
+    </div>
+</div>

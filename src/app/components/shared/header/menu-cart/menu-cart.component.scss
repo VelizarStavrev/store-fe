@@ -1,0 +1,114 @@
+@import '../../../../styles/mixins.scss';
+
+$modal-width: 250px;
+
+.menu-container {
+    z-index: 2;
+    position: absolute;
+    right: 0;
+    margin-top: var(--spacing-minimal);
+    padding: var(--spacing-medium);
+    border-radius: var(--border-radius-medium);
+    background-color: var(--primary-hover);
+    border-top: 2px solid var(--secondary);
+    display: flex;
+    flex-direction: column;
+    width: $modal-width;
+    animation: moveFromTop 0.5s linear;
+
+    * {
+        animation: fadeIn 0.5s linear;
+    }
+
+    .menu-title {
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        font-size: var(--font-size-normal);
+    }
+
+    .cart-container {
+        max-height: 150px;
+        overflow: auto;
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--spacing-small);
+
+            &:first-child {
+                margin-top: 0;
+            }
+
+            .cart-item-information {
+                display: flex;
+
+                .cart-item-image {
+                    margin-right: var(--spacing-small);
+
+                    img {
+                        width: 34px;
+                        height: 34px;
+                    }
+                }
+
+                .cart-item-text {
+                    width: 150px;
+
+                    .cart-item-title {
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                    }
+                }
+            }
+
+            button {
+                border: none;
+                background-color: transparent;
+                margin-left: var(--spacing-minimal);
+
+                svg {
+                    width: auto;
+                    height: var(--font-size-small);
+                }
+
+                &:hover {
+                    svg path {
+                        stroke: var(--secondary);
+                        transition: var(--transition-svg);
+                    }
+                }
+            }
+        }
+    }
+
+    .button-container {
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+        font-weight: bold;
+
+        a {
+            background-color: var(--secondary);
+            color: var(--primary);
+            border-radius: var(--border-radius-small);
+            padding: var(--spacing-small);
+            text-align: center;
+            text-transform: uppercase;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+
+            &:hover {
+                background-color: var(--secondary-hover);
+            }
+        }
+    }
+
+    @include phone {
+        right: 50%;
+        transform: translate(50%, 0);
+    }
+}

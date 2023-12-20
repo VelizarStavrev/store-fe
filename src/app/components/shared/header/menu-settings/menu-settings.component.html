@@ -1,0 +1,18 @@
+<div class="menu-container">
+    <p class="menu-title">Profile</p>
+    <ng-container *ngIf="isUserLoggedIn">
+        <a routerLink="/profile">Edit</a>
+        <button class="last-element-spacing" (click)="userLogout()">Log out</button>
+    </ng-container>
+    <ng-container *ngIf="!isUserLoggedIn">
+        <a routerLink="/register">Register</a>
+        <a class="last-element-spacing" routerLink="/login">Login</a>
+    </ng-container>
+
+    <p class="menu-title">Settings</p>
+    <app-toggle
+        [currentValue]="currentTheme"
+        [options]="themeToggleOptions"
+        (valueChanged)="toggleTheme($event)"
+    ></app-toggle>
+</div>

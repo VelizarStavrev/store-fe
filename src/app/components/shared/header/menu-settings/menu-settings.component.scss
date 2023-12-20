@@ -1,0 +1,55 @@
+@import '../../../../styles/mixins.scss';
+
+.menu-container {
+    z-index: 2;
+    position: absolute;
+    right: 0;
+    margin-top: var(--spacing-minimal);
+    padding: var(--spacing-medium);
+    border-radius: var(--border-radius-medium);
+    background-color: var(--primary-hover);
+    border-top: 2px solid var(--secondary);
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+    animation: moveFromTop 0.5s linear;
+    
+    * {
+        animation: fadeIn 0.5s linear;
+    }
+
+    .menu-title {
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        font-size: var(--font-size-normal);
+    }
+
+    a,
+    button {
+        background-color: var(--secondary);
+        color: var(--primary);
+        border-radius: var(--border-radius-small);
+        padding: var(--spacing-small);
+        border: none;
+        text-align: center;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-weight: bold;
+
+        &.last-element-spacing {
+            margin-top: var(--spacing-small);
+            margin-bottom: var(--spacing-medium);
+        }
+
+        &:hover {
+            background-color: var(--secondary-hover);
+        }
+    }
+
+    @include phone {
+        right: 50%;
+        transform: translate(50%, 0);
+    }
+}

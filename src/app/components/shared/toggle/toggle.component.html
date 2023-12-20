@@ -1,0 +1,12 @@
+<p class="toggle-title">{{ options?.toggleHeader }}</p>
+
+<div class="option-container">
+    <p>{{ options?.leftOption }}</p>
+    
+    <label class="switch">
+        <input type="checkbox" [checked]="currentValue === options?.rightOption" (click)="toggleValue()">
+        <span class="slider"></span>
+    </label>
+
+    <p>{{ options?.rightOption }}</p>
+</div>

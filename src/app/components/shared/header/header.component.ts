@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Theme } from 'src/app/interfaces/theme';
 import { ThemeService } from 'src/app/services/theme/theme.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { ThemeService } from 'src/app/services/theme/theme.service';
 })
 export class HeaderComponent {
   username = ''; // TO DO - implement when the login service is available
-  currentTheme: 'Normal' | 'Dark' = 'Normal';
+  currentTheme: Theme = 'Normal';
   totalPrice = 0; // TO DO - implement when the cart service is available
 
   isProfileMenuActive = false;

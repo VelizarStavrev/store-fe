@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Theme } from 'src/app/interfaces/theme';
 import { ThemeService } from 'src/app/services/theme/theme.service';
 
 @Component({
@@ -7,12 +8,16 @@ import { ThemeService } from 'src/app/services/theme/theme.service';
   styleUrls: ['./menu-settings.component.scss'],
 })
 export class MenuSettingsComponent {
-  @Input() currentTheme: 'Normal' | 'Dark' = 'Normal';
-  themeToggleOptions = {
-    toggleHeader: 'Theme',
-    leftOption: 'Normal',
-    rightOption: 'Dark',
-  };
+  @Input() currentTheme: Theme = 'Normal';
+  themeToggleOptions: {
+    toggleHeader: string,
+    leftOption: Theme,
+    rightOption: Theme,
+  } = {
+      toggleHeader: 'Theme',
+      leftOption: 'Normal',
+      rightOption: 'Dark',
+    };
 
   isUserLoggedIn = false; // TO DO - implement when the login service is available
 
@@ -20,8 +25,8 @@ export class MenuSettingsComponent {
     private themeService: ThemeService,
   ) { }
 
-  toggleTheme(theme: string): void {
-    this.themeService.setTheme(theme === 'Dark' ? theme : 'Normal');
+  toggleTheme(theme: Theme): void {
+    this.themeService.setTheme(theme);
   }
 
   userLogout(): void {

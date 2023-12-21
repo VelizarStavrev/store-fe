@@ -16,7 +16,7 @@ describe('ToggleComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ToggleComponent],
     });
-    fixture = TestBed.createComponent(ToggleComponent);
+    fixture = TestBed.createComponent(ToggleComponent<string>);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

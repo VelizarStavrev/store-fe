@@ -1,11 +1,12 @@
 import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
+import { Theme } from 'src/app/interfaces/theme';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ThemeService {
   private renderer: Renderer2;
-  private currentTheme: 'Normal' | 'Dark' = 'Normal';
+  private currentTheme: Theme = 'Normal';
 
   constructor(
     rendererFactory: RendererFactory2,
@@ -19,7 +20,7 @@ export class ThemeService {
     }
   }
 
-  setTheme(theme: 'Normal' | 'Dark'): void {
+  setTheme(theme: Theme): void {
     this.currentTheme = theme;
     
     if (theme === 'Dark') {
@@ -33,7 +34,7 @@ export class ThemeService {
     localStorage.setItem('theme', theme);
   }
 
-  getTheme(): 'Normal' | 'Dark' {
+  getTheme(): Theme {
     return this.currentTheme;
   }
 }

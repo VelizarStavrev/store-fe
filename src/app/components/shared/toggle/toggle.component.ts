@@ -5,15 +5,15 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   templateUrl: './toggle.component.html',
   styleUrls: ['./toggle.component.scss'],
 })
-export class ToggleComponent implements OnInit {
-  @Input() currentValue = '';
+export class ToggleComponent<T = string> implements OnInit {
+  @Input() currentValue?: T;
   @Input() options?: {
     toggleHeader: string,
-    leftOption: string,
-    rightOption: string,
+    leftOption: T,
+    rightOption: T,
   };
 
-  @Output() valueChanged = new EventEmitter<string>();
+  @Output() valueChanged = new EventEmitter<T>();
 
   ngOnInit(): void {
     if (this.options && !this.currentValue) {

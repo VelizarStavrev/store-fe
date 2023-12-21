@@ -54,13 +54,15 @@ describe('MenuSettingsComponent', () => {
       });
     });
 
-    describe('and the value is not "Dark"', () => {
+    describe('and the value is "Normal"', () => {
+      const expectedValue = 'Normal';
+
       beforeEach(() => {
-        component.toggleTheme('ExampleValue');
+        component.toggleTheme(expectedValue);
       });
       
       it('should call #setTheme from the theme service with "Normal"', () => {
-        expect(setThemeSpy).toHaveBeenCalledOnceWith('Normal');
+        expect(setThemeSpy).toHaveBeenCalledOnceWith(expectedValue);
       });
     });
   });

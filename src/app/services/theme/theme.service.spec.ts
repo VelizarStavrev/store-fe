@@ -1,7 +1,8 @@
+import { Renderer2, RendererFactory2 } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
 import { ThemeService } from './theme.service';
-import { Renderer2, RendererFactory2 } from '@angular/core';
+import { Theme } from 'src/app/interfaces/theme';
 
 describe('ThemeService', () => {
   let service: ThemeService;
@@ -129,7 +130,7 @@ describe('ThemeService', () => {
   });
 
   describe('#getTheme', () => {
-    let receivedTheme: 'Normal' | 'Dark';
+    let receivedTheme: Theme;
 
     describe('and the theme is Dark', () => {
       const expectedTheme = 'Dark';

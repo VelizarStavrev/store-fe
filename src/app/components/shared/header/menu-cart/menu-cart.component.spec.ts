@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MenuCartComponent } from './menu-cart.component';
+import { ButtonLinkComponentStub } from '../../button-link/button-link.component.stub';
 
 describe('MenuCartComponent', () => {
   let component: MenuCartComponent;
@@ -8,7 +9,10 @@ describe('MenuCartComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MenuCartComponent],
+      declarations: [
+        MenuCartComponent,
+        ButtonLinkComponentStub,
+      ],
     });
     fixture = TestBed.createComponent(MenuCartComponent);
     component = fixture.componentInstance;

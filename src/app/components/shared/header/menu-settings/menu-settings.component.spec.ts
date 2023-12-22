@@ -9,6 +9,8 @@ import { ThemeService } from 'src/app/services/theme/theme.service';
 // Stubs
 import { ToggleComponentStub } from '../../toggle/toggle.component.stub';
 import { ThemeServiceStub } from 'src/app/services/theme/theme.service.stub';
+import { ButtonLinkComponentStub } from '../../button-link/button-link.component.stub';
+import { ButtonComponentStub } from '../../button/button.component.stub';
 
 describe('MenuSettingsComponent', () => {
   let component: MenuSettingsComponent;
@@ -20,6 +22,8 @@ describe('MenuSettingsComponent', () => {
       declarations: [
         MenuSettingsComponent,
         ToggleComponentStub,
+        ButtonLinkComponentStub,
+        ButtonComponentStub,
       ],
       providers: [
         { provide: ThemeService, useClass: ThemeServiceStub },

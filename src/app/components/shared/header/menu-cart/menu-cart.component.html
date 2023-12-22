@@ -25,6 +25,6 @@
     <div class="button-container">
         Total: {{ totalPrice | currency }}
 
-        <a routerLink="/cart">Go to cart</a>
+        <app-button-link [buttonOptions]="cartButtonOptions"></app-button-link>
     </div>
 </div>

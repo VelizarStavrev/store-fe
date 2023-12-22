@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ButtonLinkOptions } from 'src/app/interfaces/button-link-options';
 
 @Component({
   selector: 'app-menu-cart',
@@ -6,6 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./menu-cart.component.scss'],
 })
 export class MenuCartComponent {
+  cartButtonOptions: ButtonLinkOptions = {
+    buttonText: 'Go To Cart',
+    buttonType: 'secondary',
+    buttonLink: '/cart',
+    buttonMarginTop: true,
+    buttonWidthFull: true,
+  };
+
   cartItems: {
     imageURL: string,
     name: string,

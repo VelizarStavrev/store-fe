@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { ButtonLinkOptions } from 'src/app/interfaces/button-link-options';
+import { ButtonOptions } from 'src/app/interfaces/button-options';
 import { Theme } from 'src/app/interfaces/theme';
 import { ThemeService } from 'src/app/services/theme/theme.service';
 
@@ -9,6 +11,36 @@ import { ThemeService } from 'src/app/services/theme/theme.service';
 })
 export class MenuSettingsComponent {
   @Input() currentTheme: Theme = 'Normal';
+
+  registerButtonOptions: ButtonLinkOptions = {
+    buttonText: 'Register',
+    buttonType: 'secondary',
+    buttonLink: '/register',
+    buttonWidthFull: true,
+  };
+
+  loginButtonOptions: ButtonLinkOptions = {
+    buttonText: 'Login',
+    buttonType: 'secondary',
+    buttonLink: '/login',
+    buttonMarginTop: true,
+    buttonWidthFull: true,
+  };
+
+  profileButtonOptions: ButtonLinkOptions = {
+    buttonText: 'Edit',
+    buttonType: 'secondary',
+    buttonLink: '/profile',
+    buttonWidthFull: true,
+  };
+
+  logoutButtonOptions: ButtonOptions = {
+    buttonText: 'Log out',
+    buttonType: 'secondary',
+    buttonMarginTop: true,
+    buttonWidthFull: true,
+  };
+
   themeToggleOptions: {
     toggleHeader: string,
     leftOption: Theme,
@@ -19,7 +51,7 @@ export class MenuSettingsComponent {
       rightOption: 'Dark',
     };
 
-  isUserLoggedIn = false; // TO DO - implement when the login service is available
+  isUserLoggedIn = true; // TO DO - implement when the login service is available
 
   constructor(
     private themeService: ThemeService,

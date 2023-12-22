@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { ButtonLinkOptions } from 'src/app/interfaces/button-link-options';
 import { ButtonOptions } from 'src/app/interfaces/button-options';
 import { Theme } from 'src/app/interfaces/theme';
@@ -10,7 +10,7 @@ import { ThemeService } from 'src/app/services/theme/theme.service';
   styleUrls: ['./menu-settings.component.scss'],
 })
 export class MenuSettingsComponent {
-  @Input() currentTheme: Theme = 'Normal';
+  currentTheme: Theme = 'Normal';
 
   registerButtonOptions: ButtonLinkOptions = {
     buttonText: 'Register',
@@ -55,9 +55,12 @@ export class MenuSettingsComponent {
 
   constructor(
     private themeService: ThemeService,
-  ) { }
+  ) {
+    this.currentTheme = themeService.getTheme();
+  }
 
   toggleTheme(theme: Theme): void {
+    this.currentTheme = theme;
     this.themeService.setTheme(theme);
   }
 

@@ -1,0 +1,10 @@
+<div class="notification-container">
+    <p 
+        *ngFor="let notification of currentNotifications; index as i;" 
+        [class]="notification?.type" 
+        (animationend)="removeNotification(i)" 
+        (click)="removeNotification(i)"
+    >
+        {{ notification?.message }}
+    </p>
+</div>

@@ -16,6 +16,15 @@
     }
 }
 
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
 @keyframes rotateRight {
     0% {
         transform: rotate(0deg);

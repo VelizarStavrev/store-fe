@@ -1,0 +1,37 @@
+@import '../../../styles/mixins.scss';
+
+.notification-container {
+    position: fixed;
+    top: var(--spacing-medium);
+    right: var(--spacing-medium);
+    max-width: 500px;
+    z-index: 3;
+    
+    & > p {
+        margin-bottom: var(--spacing-small);
+        padding: var(--spacing-small);
+        border-radius: var(--border-radius-medium);
+        animation: fadeOut 3s linear 2s 1 forwards;
+        cursor: pointer;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .success {
+        background-color: var(--success);
+        color: var(--white);
+    }
+
+    .error {
+        background-color: var(--error);
+        color: var(--white);
+    }
+
+    @include phone {
+        position: absolute;
+        right: var(--spacing-small);
+        max-width: 300px;
+    }
+}

@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { MessageComponentStub } from './components/shared/message/message.component.stub';
 import { HeaderComponentStub } from './components/shared/header/header.component.stub';
 import { FooterComponentStub } from './components/shared/footer/footer.component.stub';
+import { NotificationComponentStub } from './components/shared/notification/notification.component.stub';
 
 describe('AppComponent', () => {
   let app: AppComponent;
@@ -21,6 +22,7 @@ describe('AppComponent', () => {
         MessageComponentStub,
         HeaderComponentStub,
         FooterComponentStub,
+        NotificationComponentStub,
       ],
     });
     fixture = TestBed.createComponent(AppComponent);
@@ -46,5 +48,9 @@ describe('AppComponent', () => {
 
   it('should have the main container', () => {
     expect(de.query(By.css('main'))).toBeTruthy();
+  });
+
+  it('should have the notification component', () => {
+    expect(de.query(By.css('app-notification'))).toBeTruthy();
   });
 });

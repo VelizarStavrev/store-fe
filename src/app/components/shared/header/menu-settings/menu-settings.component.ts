@@ -1,15 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+
+// Services
+import { ThemeService } from 'src/app/services/theme/theme.service';
+import { UserService } from 'src/app/services/user/user.service';
+
+// Interfaces
+import { Theme } from 'src/app/interfaces/theme';
 import { ButtonLinkOptions } from 'src/app/interfaces/button-link-options';
 import { ButtonOptions } from 'src/app/interfaces/button-options';
-import { Theme } from 'src/app/interfaces/theme';
-import { ThemeService } from 'src/app/services/theme/theme.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-menu-settings',
   templateUrl: './menu-settings.component.html',
   styleUrls: ['./menu-settings.component.scss'],
 })
-export class MenuSettingsComponent {
+export class MenuSettingsComponent implements OnInit, OnDestroy {
   currentTheme: Theme = 'Normal';
 
   registerButtonOptions: ButtonLinkOptions = {
@@ -51,12 +57,24 @@ export class MenuSettingsComponent {
       rightOption: 'Dark',
     };
 
-  isUserLoggedIn = true; // TO DO - implement when the login service is available
+  isUserLoggedIn = false;
+  private _isUserLoggedInSubscription?: Subscription;
 
   constructor(
     private themeService: ThemeService,
+    private userService: UserService,
   ) {
     this.currentTheme = themeService.getTheme();
+  }
+
+  ngOnInit(): void {
+    this._isUserLoggedInSubscription = this.userService.isUserLoggedIn.subscribe((isUserLoggedIn) => {
+      this.isUserLoggedIn = isUserLoggedIn;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this._isUserLoggedInSubscription?.unsubscribe();
   }
 
   toggleTheme(theme: Theme): void {
@@ -65,6 +83,6 @@ export class MenuSettingsComponent {
   }
 
   userLogout(): void {
-    // TO DO - implement when the login service is available
+    this.userService.userLogout();
   }
 }

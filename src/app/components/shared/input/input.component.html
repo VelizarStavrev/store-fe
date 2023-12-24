@@ -1,0 +1,5 @@
+<div class="input-container">
+    <label [class.small-label]="formControl.value" [for]="label">{{ label }}</label>
+    <input [class.error]="!error" [type]="type" [name]="label" [formControl]="formControl" />
+</div>
+<p class="error" [class.hidden]="error">A valid {{ label }} is required.</p>

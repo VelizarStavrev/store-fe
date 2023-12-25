@@ -28,7 +28,7 @@
     </app-input>
     <p class="error" *ngIf="emailExistsError">E-mail already exists.</p>
     <p class="warning" *ngIf="!(email?.invalid && (email?.dirty || email?.touched)) && !emailExistsError">You can write a random e-mail here.</p>
-    <p class="error" *ngIf="!(!(email?.invalid && (email?.dirty || email?.touched))) && !emailExistsError">
+    <p class="error" *ngIf="!!(email?.invalid && (email?.dirty || email?.touched)) && !emailExistsError">
         {{
             email?.errors?.['email'] 
                 ? 'A valid e-mail is required.'

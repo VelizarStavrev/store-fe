@@ -1,0 +1,36 @@
+<form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+    <h1>Login</h1>
+
+    <app-input
+        name="username"
+        required
+        #usernameInput="ngModel"
+        [(ngModel)]="username"
+        label="Username"
+        [error]="usernameInput.valid || !usernameInput.touched"
+    >
+    </app-input>
+    <p class="error" [class.hidden]="usernameInput.valid || !usernameInput.touched">A username is required.</p>
+
+    <app-input
+        name="password"
+        required
+        #passwordInput="ngModel"
+        [(ngModel)]="password"
+        label="Password"
+        type="password"
+        [error]="passwordInput.valid || !passwordInput.touched"
+    >
+    </app-input>
+    <div class="error-and-link-container">
+        <p class="error" [class.hidden]="passwordInput.valid || !passwordInput.touched">A password is required.</p>
+        <app-button-link [buttonOptions]="forgottenPasswordButtonOptions"></app-button-link>
+    </div>
+
+    <app-button
+        [buttonOptions]="submitButtonOptions"
+        [isLoading]="isLoading"
+        [buttonDisabled]="!loginForm.valid"
+    ></app-button>
+    <app-button-link [buttonOptions]="registerButtonOptions"></app-button-link>
+</form>

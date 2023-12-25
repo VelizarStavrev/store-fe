@@ -1,0 +1,81 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <h1>Register</h1>
+
+    <app-input
+        name="username"
+        formControlName="username"
+        label="Username"
+        [error]="!(username?.invalid && (username?.dirty || username?.touched))"
+    >
+    </app-input>
+    <p class="error" *ngIf="usernameExistsError">Username already exists.</p>
+    <p class="error" *ngIf="!usernameExistsError" [class.hidden]="!(username?.invalid && (username?.dirty || username?.touched))">
+        {{
+            username?.errors?.['minlength'] 
+                ? 'A minimum length of 3 is required.'
+                : username?.errors?.['required']
+                    ? 'This field is required.'
+                    : 'An error occurred.'
+        }}
+    </p>
+
+    <app-input
+        name="email"
+        formControlName="email"
+        label="E-mail"
+        [error]="!(email?.invalid && (email?.dirty || email?.touched))"
+    >
+    </app-input>
+    <p class="error" *ngIf="emailExistsError">E-mail already exists.</p>
+    <p class="warning" *ngIf="!(email?.invalid && (email?.dirty || email?.touched)) && !emailExistsError">You can write a random e-mail here.</p>
+    <p class="error" *ngIf="!(!(email?.invalid && (email?.dirty || email?.touched))) && !emailExistsError">
+        {{
+            email?.errors?.['email'] 
+                ? 'A valid e-mail is required.'
+                : email?.errors?.['required']
+                    ? 'This field is required.'
+                    : 'An error occurred.'
+        }}
+    </p>
+
+    <app-input
+        name="password"
+        formControlName="password"
+        label="Password"
+        type="password"
+        [error]="!(password?.invalid && (password?.dirty || password?.touched))"
+    ></app-input>
+    <p class="error" [class.hidden]="!(password?.invalid && (password?.dirty || password?.touched))">
+        {{
+            password?.errors?.['minlength'] 
+                ? 'A minimum length of 6 is required.'
+                : password?.errors?.['required']
+                    ? 'This field is required.'
+                    : 'An error occurred.'
+        }}
+    </p>
+
+    <app-input
+        name="repassword"
+        formControlName="repassword"
+        label="Repeat password"
+        type="password"
+        [error]="!(repassword?.invalid && (repassword?.dirty || repassword?.touched))"
+    ></app-input>
+    <p class="error" [class.hidden]="!(repassword?.invalid && (repassword?.dirty || repassword?.touched))">
+        {{
+            repassword?.errors?.['minlength'] 
+                ? 'A minimum length of 6 is required.'
+                : repassword?.errors?.['required']
+                    ? 'This field is required.'
+                    : 'An error occurred.'
+        }}
+    </p>
+    
+    <app-button 
+        [buttonOptions]="submitButtonOptions" 
+        [buttonDisabled]="!registerForm.valid"
+        [isLoading]="isLoading"
+    ></app-button>
+    <app-button-link [buttonOptions]="loginButtonOptions"></app-button-link>
+</form>

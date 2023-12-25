@@ -5,7 +5,7 @@
         name="username"
         formControlName="username"
         label="Username"
-        [error]="!(username?.invalid && (username?.dirty || username?.touched))"
+        [error]="!!(username?.invalid && (username?.dirty || username?.touched))"
     >
     </app-input>
     <p class="error" *ngIf="usernameExistsError">Username already exists.</p>
@@ -23,7 +23,7 @@
         name="email"
         formControlName="email"
         label="E-mail"
-        [error]="!(email?.invalid && (email?.dirty || email?.touched))"
+        [error]="!!(email?.invalid && (email?.dirty || email?.touched))"
     >
     </app-input>
     <p class="error" *ngIf="emailExistsError">E-mail already exists.</p>
@@ -43,7 +43,7 @@
         formControlName="password"
         label="Password"
         type="password"
-        [error]="!(password?.invalid && (password?.dirty || password?.touched))"
+        [error]="!!(password?.invalid && (password?.dirty || password?.touched))"
     ></app-input>
     <p class="error" [class.hidden]="!(password?.invalid && (password?.dirty || password?.touched))">
         {{
@@ -60,7 +60,7 @@
         formControlName="repassword"
         label="Repeat password"
         type="password"
-        [error]="!(repassword?.invalid && (repassword?.dirty || repassword?.touched))"
+        [error]="!!(repassword?.invalid && (repassword?.dirty || repassword?.touched))"
     ></app-input>
     <p class="error" [class.hidden]="!(repassword?.invalid && (repassword?.dirty || repassword?.touched))">
         {{

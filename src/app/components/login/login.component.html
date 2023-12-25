@@ -7,7 +7,7 @@
         #usernameInput="ngModel"
         [(ngModel)]="username"
         label="Username"
-        [error]="usernameInput.valid || !usernameInput.touched"
+        [error]="usernameInput.invalid && usernameInput.touched"
     >
     </app-input>
     <p class="error" [class.hidden]="usernameInput.valid || !usernameInput.touched">A username is required.</p>
@@ -19,7 +19,7 @@
         [(ngModel)]="password"
         label="Password"
         type="password"
-        [error]="passwordInput.valid || !passwordInput.touched"
+        [error]="passwordInput.invalid && passwordInput.touched"
     >
     </app-input>
     <div class="error-and-link-container">

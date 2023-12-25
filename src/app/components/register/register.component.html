@@ -60,9 +60,10 @@
         formControlName="repassword"
         label="Repeat password"
         type="password"
-        [error]="!!(repassword?.invalid && (repassword?.dirty || repassword?.touched))"
+        [error]="!!(repassword?.invalid && (repassword?.dirty || repassword?.touched)) || password?.value !== repassword?.value"
     ></app-input>
-    <p class="error" [class.hidden]="!(repassword?.invalid && (repassword?.dirty || repassword?.touched))">
+    <p class="error" *ngIf="password?.value !== repassword?.value">The passwords must match.</p>
+    <p class="error" *ngIf="password?.value === repassword?.value" [class.hidden]="!(repassword?.invalid && (repassword?.dirty || repassword?.touched))">
         {{
             repassword?.errors?.['minlength'] 
                 ? 'A minimum length of 6 is required.'
@@ -74,7 +75,7 @@
     
     <app-button 
         [buttonOptions]="submitButtonOptions" 
-        [buttonDisabled]="!registerForm.valid"
+        [buttonDisabled]="!registerForm.valid || password?.value !== repassword?.value"
         [isLoading]="isLoading"
     ></app-button>
     <app-button-link [buttonOptions]="loginButtonOptions"></app-button-link>

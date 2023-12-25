@@ -18,6 +18,7 @@ export class InputComponent implements ControlValueAccessor, OnDestroy {
   @Input() label = '';
   @Input() type: 'text' | 'password' = 'text';
   @Input() error: boolean | null = false;
+  @Input() disabled = false;
 
   formControl = new FormControl();
   _changeSubscriptions: Subscription[] = [];

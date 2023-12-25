@@ -1,4 +1,4 @@
-<div class="input-container" [class.error]="error">
+<div class="input-container" [class.error]="error" [class.disabled]="disabled">
     <label [class.small-label]="formControl.value" [for]="label">{{ label }}</label>
     <input [type]="type" [name]="label" [formControl]="formControl" (blur)="onTouched($event)" />
 </div>

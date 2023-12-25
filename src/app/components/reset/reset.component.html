@@ -1,0 +1,19 @@
+<form #resetForm="ngForm">
+    <h1>Reset Password</h1>
+
+    <app-input
+        name="email"
+        required
+        #emailInput="ngModel"
+        [(ngModel)]="email"
+        label="E-mail"
+    >
+    </app-input>
+    <p class="warning">Password resetting is not available currently.</p>
+
+    <app-button
+        [buttonOptions]="submitButtonOptions"
+        [buttonDisabled]="true"
+    ></app-button>
+    <app-button-link [buttonOptions]="loginButtonOptions"></app-button-link>
+</form>

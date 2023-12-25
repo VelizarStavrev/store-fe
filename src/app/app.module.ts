@@ -17,6 +17,7 @@ import { ButtonLinkComponent } from './components/shared/button-link/button-link
 import { InputComponent } from './components/shared/input/input.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
+import { ResetComponent } from './components/reset/reset.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { LoginComponent } from './components/login/login.component';
     InputComponent,
     RegisterComponent,
     LoginComponent,
+    ResetComponent,
   ],
   imports: [
     BrowserModule,

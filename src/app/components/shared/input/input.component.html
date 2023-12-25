@@ -1,5 +1,4 @@
-<div class="input-container">
+<div class="input-container" [class.error]="!error">
     <label [class.small-label]="formControl.value" [for]="label">{{ label }}</label>
-    <input [class.error]="!error" [type]="type" [name]="label" [formControl]="formControl" />
+    <input [type]="type" [name]="label" [formControl]="formControl" (blur)="onTouched($event)" />
 </div>
-<p class="error" [class.hidden]="error">A valid {{ label }} is required.</p>

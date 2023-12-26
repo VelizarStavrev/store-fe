@@ -63,11 +63,11 @@ export class MenuSettingsComponent implements OnInit, OnDestroy {
   constructor(
     private themeService: ThemeService,
     private userService: UserService,
-  ) {
-    this.currentTheme = themeService.getTheme();
-  }
+  ) { }
 
   ngOnInit(): void {
+    this.currentTheme = this.themeService.getTheme();
+
     this._isUserLoggedInSubscription = this.userService.isUserLoggedIn.subscribe((isUserLoggedIn) => {
       this.isUserLoggedIn = isUserLoggedIn;
     });

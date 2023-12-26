@@ -52,6 +52,10 @@ export class UserService {
     this.notificationService.setNotification({ type: 'success', message: 'Successfully logged out.' });
   }
 
+  userContact(data: { email: string, name: string, message: string }): Observable<Response> {
+    return this.http.post<Response>(this.userURL + '/contact', data);
+  }
+
   userDataChange(data: { username: string, email: string }): Observable<Response> {
     return this.http.post<Response>(this.userURL + '/change/data', data);
   }

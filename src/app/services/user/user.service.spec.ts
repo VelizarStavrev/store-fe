@@ -90,6 +90,70 @@ describe('UserService', () => {
     });
   });
 
+  describe('#userLogout', () => {
+    let setUserLoggedInSpy: jasmine.Spy;
+    let setUsernameSpy: jasmine.Spy;
+    let navigateSpy: jasmine.Spy;
+    let setNotificationSpy: jasmine.Spy;
+    let localStorageToken;
+
+    beforeEach(() => {
+      setUserLoggedInSpy = spyOn(service, 'setUserLoggedIn');
+      setUsernameSpy = spyOn(service, 'setUsername');
+      navigateSpy = spyOn(router, 'navigate');
+      setNotificationSpy = spyOn(notificationService, 'setNotification');
+      localStorageToken = null;
+
+      localStorage.setItem('token', 'fakeTokenValue');
+      service.userLogout();
+    });
+
+    it('should remove the localStorage token', () => {
+      localStorageToken = localStorage.getItem('token');
+      expect(localStorageToken).toBeNull();
+    });
+
+    it('should call #setUserLoggedIn', () => {
+      expect(setUserLoggedInSpy).toHaveBeenCalled();
+    });
+
+    it('should call #setUsername', () => {
+      expect(setUsernameSpy).toHaveBeenCalled();
+    });
+
+    it('should redirect the user', () => {
+      expect(navigateSpy).toHaveBeenCalledWith(['/login']);
+    });
+
+    it('should show a success notification', () => {
+      expect(setNotificationSpy).toHaveBeenCalledWith({ type: 'success', message: 'Successfully logged out.' });
+    });
+  });
+
+  describe('#userContact', () => {
+    const exampleData = {
+      email: 'example@mail',
+      name: 'exampleName',
+      message: 'A message from the form.',
+    };
+    const exampleResponse = {
+      status: true,
+      message: 'Success!',
+    };
+
+    beforeEach(() => {
+      service.userContact(exampleData).subscribe((postData) => {
+        expect(postData).toEqual(exampleResponse);
+      });
+    });
+
+    it('should send a request to the server', () => {
+      const req = http.expectOne(`${serverURL}/contact`);
+      expect(req.request.method).toBe('POST');
+      req.flush(exampleResponse);
+    });
+  });
+
   describe('#userDataChange', () => {
     const exampleData = {
       email: 'example@mail',
@@ -156,46 +220,6 @@ describe('UserService', () => {
       const req = http.expectOne(`${serverURL}/data`);
       expect(req.request.method).toBe('GET');
       req.flush(exampleResponse);
-    });
-  });
-
-  describe('#userLogout', () => {
-    let setUserLoggedInSpy: jasmine.Spy;
-    let setUsernameSpy: jasmine.Spy;
-    let navigateSpy: jasmine.Spy;
-    let setNotificationSpy: jasmine.Spy;
-    let localStorageToken;
-
-    beforeEach(() => {
-      setUserLoggedInSpy = spyOn(service, 'setUserLoggedIn');
-      setUsernameSpy = spyOn(service, 'setUsername');
-      navigateSpy = spyOn(router, 'navigate');
-      setNotificationSpy = spyOn(notificationService, 'setNotification');
-      localStorageToken = null;
-
-      localStorage.setItem('token', 'fakeTokenValue');
-      service.userLogout();
-    });
-
-    it('should remove the localStorage token', () => {
-      localStorageToken = localStorage.getItem('token');
-      expect(localStorageToken).toBeNull();
-    });
-
-    it('should call #setUserLoggedIn', () => {
-      expect(setUserLoggedInSpy).toHaveBeenCalled();
-    });
-
-    it('should call #setUsername', () => {
-      expect(setUsernameSpy).toHaveBeenCalled();
-    });
-
-    it('should redirect the user', () => {
-      expect(navigateSpy).toHaveBeenCalledWith(['/login']);
-    });
-
-    it('should show a success notification', () => {
-      expect(setNotificationSpy).toHaveBeenCalledWith({ type: 'success', message: 'Successfully logged out.' });
     });
   });
 

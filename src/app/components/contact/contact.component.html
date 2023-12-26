@@ -1,0 +1,48 @@
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <h1>Contact Us</h1>
+
+    <app-input
+        name="email"
+        formControlName="email"
+        label="E-mail"
+        [error]="!!(email?.invalid && (email?.dirty || email?.touched))"
+    >
+    </app-input>
+    <p class="error" [class.hidden]="!(email?.invalid && (email?.dirty || email?.touched))">
+        {{
+            email?.errors?.['email'] 
+                ? 'A valid e-mail is required.'
+                : email?.errors?.['required']
+                    ? 'This field is required.'
+                    : 'An error occurred.'
+        }}
+    </p>
+
+    <app-input
+        name="name"
+        formControlName="name"
+        label="Name"
+        [error]="!!(name?.invalid && (name?.dirty || name?.touched))"
+    >
+    </app-input>
+    <p class="error" [class.hidden]="!(name?.invalid && (name?.dirty || name?.touched))">
+        This field is required.
+    </p>
+
+    <div class="input-container" [class.error]="!!(message?.invalid && (message?.dirty || message?.touched))">
+        <label [class.small-label]="message?.value" for="message">Message</label>
+        <textarea
+            rows="5"
+            formControlName="message"
+        ></textarea>
+    </div>
+    <p class="error" [class.hidden]="!(message?.invalid && (message?.dirty || message?.touched))">
+        This field is required.
+    </p>
+    
+    <app-button 
+        [buttonOptions]="submitButtonOptions" 
+        [buttonDisabled]="contactForm.invalid"
+        [isLoading]="isLoading"
+    ></app-button>
+</form>

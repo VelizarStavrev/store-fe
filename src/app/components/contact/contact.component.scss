@@ -1,0 +1,40 @@
+.input-container {
+    position: relative;
+    margin-top: var(--spacing-small);
+
+    &:focus-within label,
+    .small-label {
+        top: 0;
+        left: calc(var(--spacing-medium) / 2);
+        font-size: var(--font-size-small);
+    }
+
+    &.error {
+        label {
+            color: var(--error);
+        }
+
+        textarea {
+            border-color: var(--error);
+        }
+    }
+
+    label {
+        font-weight: bold;
+        position: absolute;
+        left: var(--spacing-medium);
+        top: var(--spacing-small);
+        transition: top 0.25s, left 0.25s;
+    }
+    
+    textarea {
+        border: none;
+        padding: var(--spacing-small) var(--spacing-medium);
+        border-radius: var(--border-radius-medium);
+        box-shadow: var(--box-shadow);
+        background-color: var(--white);
+        width: 100%;
+        border-bottom: 2px solid transparent;
+        resize: none;
+    }
+}

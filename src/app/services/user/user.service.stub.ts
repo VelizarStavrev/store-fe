@@ -7,6 +7,7 @@ export class UserServiceStub {
     userRegister = () => { };
     userLogin = () => { };
     userLogout = () => { };
+    userContact = () => { };
     userDataChange = () => { };
     userPasswordChange = () => { };
     getUserData = () => { };

@@ -20,6 +20,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ResetComponent } from './components/reset/reset.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { UserTokenInterceptor } from './interceptors/user-token.interceptor';
+import { ContactComponent } from './components/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { UserTokenInterceptor } from './interceptors/user-token.interceptor';
     LoginComponent,
     ResetComponent,
     ProfileComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,

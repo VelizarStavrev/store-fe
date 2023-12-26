@@ -1,0 +1,96 @@
+<div class="profile-container">
+    <div class="data-container">
+        <form [formGroup]="dataForm" (ngSubmit)="onDataSubmit()">
+            <h1>Profile Data</h1>
+        
+            <app-input
+                name="username"
+                formControlName="username"
+                label="Username"
+                [inputDisabled]="true"
+                [error]="!!(username?.invalid && (username?.dirty || username?.touched))"
+            >
+            </app-input>
+            <p class="warning">Username change is not available currently.</p>
+        
+            <app-input
+                name="email"
+                formControlName="email"
+                label="E-mail"
+                [error]="!!(email?.invalid && (email?.dirty || email?.touched))"
+            >
+            </app-input>
+            <p class="warning" *ngIf="!(email?.invalid && (email?.dirty || email?.touched))">You can write a random e-mail here.</p>
+            <p class="error" *ngIf="!!(email?.invalid && (email?.dirty || email?.touched))">
+                {{
+                    email?.errors?.['email'] 
+                        ? 'A valid e-mail is required.'
+                        : email?.errors?.['required']
+                            ? 'This field is required.'
+                            : 'An error occurred.'
+                }}
+            </p>
+            
+            <app-button 
+                [buttonOptions]="submitButtonOptions" 
+                [buttonDisabled]="!dataForm.valid"
+                [isLoading]="isDataFormLoading"
+            ></app-button>
+        </form>
+        
+        <form [formGroup]="passwordForm" (ngSubmit)="onPasswordSubmit()">
+            <h1>Change Password</h1>
+        
+            <app-input
+                name="password"
+                formControlName="password"
+                label="Password"
+                type="password"
+                [error]="!!(password?.invalid && (password?.dirty || password?.touched))"
+            ></app-input>
+            <p class="error" [class.hidden]="!(password?.invalid && (password?.dirty || password?.touched))">
+                {{
+                    password?.errors?.['minlength'] 
+                        ? 'A minimum length of 6 is required.'
+                        : password?.errors?.['required']
+                            ? 'This field is required.'
+                            : 'An error occurred.'
+                }}
+            </p>
+        
+            <app-input
+                name="repassword"
+                formControlName="repassword"
+                label="Repeat password"
+                type="password"
+                [error]="!!(repassword?.invalid && (repassword?.dirty || repassword?.touched)) || password?.value !== repassword?.value"
+            ></app-input>
+            <p class="error" *ngIf="password?.value !== repassword?.value">The passwords must match.</p>
+            <p class="error" *ngIf="password?.value === repassword?.value" [class.hidden]="!(repassword?.invalid && (repassword?.dirty || repassword?.touched))">
+                {{
+                    repassword?.errors?.['minlength'] 
+                        ? 'A minimum length of 6 is required.'
+                        : repassword?.errors?.['required']
+                            ? 'This field is required.'
+                            : 'An error occurred.'
+                }}
+            </p>
+            
+            <app-button 
+                [buttonOptions]="submitButtonOptions" 
+                [buttonDisabled]="!passwordForm.valid || password?.value !== repassword?.value"
+                [isLoading]="isPasswordFormLoading"
+            ></app-button>
+        </form>
+    </div>
+
+    <div class="setting-container">
+        <h1>Settings</h1>
+
+        <app-toggle
+            [currentValue]="currentTheme"
+            [options]="themeToggleOptions"
+            (valueChanged)="toggleTheme($event)"
+        ></app-toggle>
+    </div>
+</div>

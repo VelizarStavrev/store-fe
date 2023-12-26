@@ -1,0 +1,19 @@
+.profile-container {
+    display: flex;
+
+    .data-container {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-medium);
+    }
+    
+    .setting-container {
+        background-color: var(--white);
+        box-shadow: var(--box-shadow);
+        border-radius: var(--border-radius-big);
+        padding: var(--spacing-medium);
+        margin-left: var(--spacing-medium);
+        width: 300px;
+        align-self: flex-start;
+    }
+}

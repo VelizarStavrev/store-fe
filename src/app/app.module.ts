@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/shared/header/header.component';
@@ -18,6 +18,8 @@ import { InputComponent } from './components/shared/input/input.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { ResetComponent } from './components/reset/reset.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { UserTokenInterceptor } from './interceptors/user-token.interceptor';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { ResetComponent } from './components/reset/reset.component';
     RegisterComponent,
     LoginComponent,
     ResetComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,13 @@ import { ResetComponent } from './components/reset/reset.component';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, 
+      useClass: UserTokenInterceptor, 
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

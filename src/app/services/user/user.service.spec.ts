@@ -90,6 +90,75 @@ describe('UserService', () => {
     });
   });
 
+  describe('#userDataChange', () => {
+    const exampleData = {
+      email: 'example@mail',
+      username: 'exampleuname',
+    };
+    const exampleResponse = {
+      status: true,
+      message: 'Success!',
+    };
+
+    beforeEach(() => {
+      service.userDataChange(exampleData).subscribe((postData) => {
+        expect(postData).toEqual(exampleResponse);
+      });
+    });
+
+    it('should send a request to the server', () => {
+      const req = http.expectOne(`${serverURL}/change/data`);
+      expect(req.request.method).toBe('POST');
+      req.flush(exampleResponse);
+    });
+  });
+
+  describe('#userPasswordChange', () => {
+    const exampleData = {
+      password: 'examplepassword',
+      repassword: 'examplepassword',
+    };
+    const exampleResponse = {
+      status: true,
+      message: 'Success!',
+    };
+
+    beforeEach(() => {
+      service.userPasswordChange(exampleData).subscribe((postData) => {
+        expect(postData).toEqual(exampleResponse);
+      });
+    });
+
+    it('should send a request to the server', () => {
+      const req = http.expectOne(`${serverURL}/change/password`);
+      expect(req.request.method).toBe('POST');
+      req.flush(exampleResponse);
+    });
+  });
+
+  describe('#getUserData', () => {
+    const exampleResponse = {
+      status: true,
+      message: 'Success!',
+      data: {
+        email: 'example@mail',
+        username: 'exampleuname',
+      },
+    };
+
+    beforeEach(() => {
+      service.getUserData().subscribe((data) => {
+        expect(data).toEqual(exampleResponse);
+      });
+    });
+
+    it('should send a request to the server', () => {
+      const req = http.expectOne(`${serverURL}/data`);
+      expect(req.request.method).toBe('GET');
+      req.flush(exampleResponse);
+    });
+  });
+
   describe('#userLogout', () => {
     let setUserLoggedInSpy: jasmine.Spy;
     let setUsernameSpy: jasmine.Spy;
@@ -148,7 +217,7 @@ describe('UserService', () => {
       localStorage.setItem('token', 'fakeTokenValue');
       expectedObservableValue = true;
       service.setUserLoggedIn();
-      
+
       localStorage.removeItem('token');
       expectedObservableValue = false;
       service.setUserLoggedIn();

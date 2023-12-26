@@ -7,8 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 
 // Interfaces
-import { Register } from 'src/app/interfaces/register';
-import { Login } from 'src/app/interfaces/login';
+import { Response, ResponseData, ResponseLogin, ResponseRegister } from 'src/app/interfaces/user';
 
 // Other
 import { config } from 'src/app/config/config';
@@ -35,13 +34,13 @@ export class UserService {
     username: string;
     password: string;
     repassword: string;
-  }): Observable<Register> {
-    return this.http.post<Register>(this.userURL + '/register', data);
+  }): Observable<ResponseRegister> {
+    return this.http.post<ResponseRegister>(this.userURL + '/register', data);
   }
 
-  userLogin(username: string, password: string): Observable<Login> {
-    const data: object = { username, password };
-    return this.http.post<Login>(this.userURL + '/login', data);
+  userLogin(username: string, password: string): Observable<ResponseLogin> {
+    const data = { username, password };
+    return this.http.post<ResponseLogin>(this.userURL + '/login', data);
   }
 
   userLogout(): void {
@@ -51,6 +50,18 @@ export class UserService {
     this.setUsername();
     this.router.navigate(['/login']);
     this.notificationService.setNotification({ type: 'success', message: 'Successfully logged out.' });
+  }
+
+  userDataChange(data: { username: string, email: string }): Observable<Response> {
+    return this.http.post<Response>(this.userURL + '/change/data', data);
+  }
+
+  userPasswordChange(data: { password: string, repassword: string }): Observable<Response> {
+    return this.http.post<Response>(this.userURL + '/change/password', data);
+  }
+
+  getUserData(): Observable<ResponseData> {
+    return this.http.get<ResponseData>(this.userURL + '/data');
   }
 
   setUserLoggedIn(): void {

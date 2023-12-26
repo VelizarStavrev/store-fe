@@ -9,7 +9,6 @@ import { UserService } from 'src/app/services/user/user.service';
 // Interfaces
 import { ButtonOptions } from 'src/app/interfaces/button-options';
 import { ButtonLinkOptions } from 'src/app/interfaces/button-link-options';
-import { Register } from 'src/app/interfaces/register';
 
 @Component({
   selector: 'app-register',
@@ -34,17 +33,17 @@ export class RegisterComponent {
   };
 
   registerForm = new FormGroup({
-    email: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.email] }),
     username: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.minLength(3)] }),
+    email: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.email] }),
     password: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.minLength(6)] }),
     repassword: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.minLength(6)] }),
   });
 
-  get email() {
-    return this.registerForm.get('email');
-  }
   get username() {
     return this.registerForm.get('username');
+  }
+  get email() {
+    return this.registerForm.get('email');
   }
   get password() {
     return this.registerForm.get('password');
@@ -53,8 +52,8 @@ export class RegisterComponent {
     return this.registerForm.get('repassword');
   }
 
-  emailExistsError = false;
   usernameExistsError = false;
+  emailExistsError = false;
   isLoading = false;
 
   constructor(
@@ -64,10 +63,10 @@ export class RegisterComponent {
   ) { }
 
   onSubmit() {
-    this.emailExistsError = false;
     this.usernameExistsError = false;
+    this.emailExistsError = false;
 
-    if (!this.registerForm.valid) {
+    if (this.registerForm.invalid) {
       this.notificationService.setNotification({ type: 'error', message: 'The form is invalid.' });
       return;
     }
@@ -76,7 +75,7 @@ export class RegisterComponent {
 
     this.userService.userRegister(this.registerForm.getRawValue())
       .subscribe({
-        next: (data: Register) => {
+        next: (data) => {
           this.isLoading = false;
 
           if (!data.status) {

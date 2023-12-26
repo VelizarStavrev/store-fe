@@ -16,6 +16,7 @@ export class InputComponentStub implements ControlValueAccessor {
   @Input() label: any;
   @Input() type: any;
   @Input() error: any;
+  @Input() inputDisabled: any;
 
   writeValue() { }
   registerOnChange() { }

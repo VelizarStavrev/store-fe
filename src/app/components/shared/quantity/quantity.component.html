@@ -1,0 +1,3 @@
+<button type="button" (click)="decrementCurrentValue()">-</button>
+<input type="text" [ngModel]="currentValue" (ngModelChange)="inputValueChanged($event)">
+<button (click)="incrementCurrentValue()">+</button>

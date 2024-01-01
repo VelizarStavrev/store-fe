@@ -1,0 +1,26 @@
+:host {
+    display: flex;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius-medium);
+}
+
+button {
+    background-color: var(--primary);
+    color: var(--white);
+    border-radius: var(--border-radius-medium);
+    padding: var(--spacing-small);
+    border: none;
+    font-weight: bold;
+    width: calc(var(--font-size-normal) + (2 * var(--spacing-small)));
+
+    &:hover {
+        background-color: var(--primary-hover);
+    }
+}
+
+input {
+    width: calc(var(--font-size-normal) + (2 * var(--spacing-small)));
+    padding: var(--spacing-small) var(--spacing-minimal);
+    border: none;
+    text-align: center;
+}

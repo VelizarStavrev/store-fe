@@ -1,0 +1,27 @@
+.loader-container {
+    svg {
+        animation: rotateRight 3s linear infinite forwards;
+
+        &.medium {
+            height: 20px;
+            width: 20px;
+        }
+
+        &.big {
+            height: 40px;
+            width: 40px;
+        }
+
+        &.primary {
+            linearGradient stop {
+                stop-color: var(--primary);
+            }
+        }
+
+        &.white {
+            linearGradient stop {
+                stop-color: var(--white);
+            }
+        }
+    }
+};

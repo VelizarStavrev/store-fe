@@ -8,4 +8,5 @@ export class ButtonComponentStub {
   @Input() buttonOptions: any;
   @Input() isLoading: any;
   @Input() buttonDisabled: any;
+  @Input() buttonWidthFull: any;
 }

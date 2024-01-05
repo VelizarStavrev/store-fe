@@ -1,0 +1,30 @@
+.search-container {
+    position: relative;
+
+    svg {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: var(--spacing-small);
+
+        path {
+            fill: var(--black);
+            opacity: 0.25;
+        }
+    }
+
+    input {
+        border: none;
+        padding: var(--spacing-small) var(--spacing-medium);
+        padding-left: var(--spacing-big);
+        border-radius: var(--border-radius-medium);
+        box-shadow: var(--box-shadow);
+        background-color: var(--white);
+        width: 100%;
+        border-bottom: 2px solid transparent;
+        
+        &::placeholder {
+            opacity: 0.25;
+        }
+    }
+}

@@ -45,7 +45,10 @@ It has the following additional rules:
 - Implement test execution after push to GitHub
 
 ## References for future use
+
 - `theme.service.spec.ts` - Testing logic in the constructor
 - `login.component.ts` - Implementation of template-driven forms
 - `register.component.ts` - Implementation of reactive forms
 - `input.component.ts` - Implementation of ControlValueAccessor
+- `search.component.ts` - Implementation of an input waiting for the user to stop typing
+- `search.component.spec.ts` - Testing RxJS debounceTime

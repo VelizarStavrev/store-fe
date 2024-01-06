@@ -30,25 +30,45 @@ describe('HeaderComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  describe('#openProfileMenu', () => {
+  describe('#toggleProfileMenu', () => {
     beforeEach(() => {
       component.isProfileMenuActive = false;
-      component.openProfileMenu();
+      component.toggleProfileMenu();
     });
 
     it('should set isProfileMenuActive to true', () => {
       expect(component.isProfileMenuActive).toBeTrue();
     });
+
+    describe('and the toggle function is called again', () => {
+      beforeEach(() => {
+        component.toggleProfileMenu();
+      });
+
+      it('should set isCartMenuActive to false', () => {
+        expect(component.isProfileMenuActive).toBeFalse();
+      });
+    });
   });
 
-  describe('#openCartMenu', () => {
+  describe('#toggleCartMenu', () => {
     beforeEach(() => {
       component.isCartMenuActive = false;
-      component.openCartMenu();
+      component.toggleCartMenu();
     });
 
     it('should set isCartMenuActive to true', () => {
       expect(component.isCartMenuActive).toBeTrue();
+    });
+
+    describe('and the toggle function is called again', () => {
+      beforeEach(() => {
+        component.toggleCartMenu();
+      });
+
+      it('should set isCartMenuActive to false', () => {
+        expect(component.isCartMenuActive).toBeFalse();
+      });
     });
   });
 

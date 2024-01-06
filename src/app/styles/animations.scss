@@ -1,9 +1,9 @@
 @keyframes moveFromTop {
     from {
-        margin-top: 0;
+        padding-top: 0;
     }
     to {
-        margin-top: var(--spacing-minimal);
+        padding-top: var(--spacing-minimal);
     }
 }
 

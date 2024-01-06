@@ -1,18 +1,20 @@
 <div class="menu-container">
-    <p class="menu-title">Profile</p>
-    <ng-container *ngIf="isUserLoggedIn">
-        <app-button-link [buttonOptions]="profileButtonOptions"></app-button-link>
-        <app-button [buttonOptions]="logoutButtonOptions" (click)="userLogout()"></app-button>
-    </ng-container>
-    <ng-container *ngIf="!isUserLoggedIn">
-        <app-button-link [buttonOptions]="registerButtonOptions"></app-button-link>
-        <app-button-link [buttonOptions]="loginButtonOptions"></app-button-link>
-    </ng-container>
-
-    <p class="menu-title">Settings</p>
-    <app-toggle
-        [currentValue]="currentTheme"
-        [options]="themeToggleOptions"
-        (valueChanged)="toggleTheme($event)"
-    ></app-toggle>
+    <div class="menu">
+        <p class="menu-title">Profile</p>
+        <ng-container *ngIf="isUserLoggedIn">
+            <app-button-link [buttonOptions]="profileButtonOptions"></app-button-link>
+            <app-button [buttonOptions]="logoutButtonOptions" (click)="userLogout()"></app-button>
+        </ng-container>
+        <ng-container *ngIf="!isUserLoggedIn">
+            <app-button-link [buttonOptions]="registerButtonOptions"></app-button-link>
+            <app-button-link [buttonOptions]="loginButtonOptions"></app-button-link>
+        </ng-container>
+    
+        <p class="menu-title">Settings</p>
+        <app-toggle
+            [currentValue]="currentTheme"
+            [options]="themeToggleOptions"
+            (valueChanged)="toggleTheme($event)"
+        ></app-toggle>
+    </div>
 </div>

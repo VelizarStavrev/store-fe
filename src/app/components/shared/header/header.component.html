@@ -11,8 +11,8 @@
     </nav>
 
     <div class="buttons-container">
-        <div class="button-container">
-            <button [class.active]="isProfileMenuActive" (click)="openProfileMenu()">
+        <div class="button-container" (mouseleave)="closeMenu()">
+            <button [class.active]="isProfileMenuActive" (click)="toggleProfileMenu()">
                 <svg [class.spacing-right-minimal]="username" width="13" height="12" viewBox="0 0 13 12" fill="none">
                     <path 
                         d="M11.8022 11.5L0.522104 11.5C0.638936 10.1816 1.21504 8.93961 2.15841 7.99625C3.22027 6.93438 4.66046 6.33784 6.16216 6.33784C7.66386 6.33784 9.10405 6.93439 10.1659 7.99625C11.1093 8.93961 11.6854 10.1816 11.8022 11.5ZM8.58108 2.91892C8.58108 4.25485 7.4981 5.33784 6.16216 5.33784C4.82623 5.33784 3.74324 4.25485 3.74324 2.91892C3.74324 1.58299 4.82623 0.5 6.16216 0.5C7.49809 0.5 8.58108 1.58299 8.58108 2.91892Z"
@@ -26,8 +26,8 @@
             <app-menu-settings *ngIf="isProfileMenuActive"></app-menu-settings>
         </div>
 
-        <div class="button-container">
-            <button [class.active]="isCartMenuActive" (click)="openCartMenu()">
+        <div class="button-container" (mouseleave)="closeMenu()">
+            <button [class.active]="isCartMenuActive" (click)="toggleCartMenu()">
                 <svg class="spacing-right-minimal" width="16" height="13" viewBox="0 0 16 13" fill="none">
                     <path 
                         d="M13.7742 9.90323H6.41776C5.96269 9.90323 5.56501 9.59598 5.45014 9.15565L5.24123 8.35484M1 1H3.32258L5.24123 8.35484M3.72651 2.54839C4.00359 2.54839 9.96926 2.54839 13.7175 2.54839C14.3486 2.54839 14.82 3.12571 14.6963 3.7445L13.7742 8.35484H5.24123"
@@ -43,10 +43,4 @@
             <app-menu-cart *ngIf="isCartMenuActive"></app-menu-cart>
         </div>
     </div>
-
-    <div
-        *ngIf="isProfileMenuActive || isCartMenuActive"
-        class="click-closer"
-        (click)="closeMenu()"
-    ></div>
 </header>

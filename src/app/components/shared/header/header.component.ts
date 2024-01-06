@@ -32,12 +32,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this._usernameSubscription?.unsubscribe();
   }
 
-  openProfileMenu(): void {
-    this.isProfileMenuActive = true;
+  toggleProfileMenu(): void {
+    this.isProfileMenuActive = !this.isProfileMenuActive;
   }
 
-  openCartMenu(): void {
-    this.isCartMenuActive = true;
+  toggleCartMenu(): void {
+    this.isCartMenuActive = !this.isCartMenuActive;
   }
 
   closeMenu(): void {
